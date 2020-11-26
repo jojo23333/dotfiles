@@ -18,7 +18,10 @@ place it at ~/.tmux.conf
 
 ## Useful tools
 ### SwithOmega
+
+### For google drive download on commmand line
+https://github.com/wkentaro/gdown
+
 ### curlget (Chorme extenstion)
 https://chrome.google.com/webstore/detail/curlwget/jmocjfidanebdlinpbcdkcmgdifblncg
 Extremely useful when you want to download some dataset using wget/curl command.
-
