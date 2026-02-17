@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deep Research"
+  short_description: "Exhaustive web research with source filtering"
+  default_prompt: "Use $deep-research to investigate this question deeply and return only high-confidence findings."
