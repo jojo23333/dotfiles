@@ -1,0 +1,4 @@
+interface:
+  display_name: "Read arXiv Paper"
+  short_description: "Summarize and critique research papers with implementation focus"
+  default_prompt: "Use $read-arxiv-paper to analyze this paper and explain the key method, evidence, and applicability."

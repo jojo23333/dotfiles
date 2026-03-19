@@ -1,0 +1,4 @@
+interface:
+  display_name: "Read GitHub Code"
+  short_description: "Inspect public GitHub repositories with source-grounded summaries"
+  default_prompt: "Use $read-github-code to inspect this GitHub repository and explain how the relevant parts work."

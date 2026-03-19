@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev"
+  short_description: "Create and revise Slidev Markdown decks"
+  default_prompt: "Use $slidev to create or update a Slidev deck that is valid, concise, and ready to run."
