@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Viva"
+  short_description: "Batch AI coding work into a human learning session"
+  default_prompt: "Use $system-viva to turn recent AI-assisted code changes into a short learning session with questions, a learner profile update, and a cited Beamer debrief."

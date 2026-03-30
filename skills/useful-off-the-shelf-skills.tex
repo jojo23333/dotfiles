@@ -1,0 +1,73 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{xcolor}
+
+\definecolor{DeckBlue}{RGB}{23, 54, 93}
+\definecolor{DeckGold}{RGB}{191, 144, 0}
+\definecolor{DeckSoft}{RGB}{246, 244, 239}
+
+\setbeamercolor{structure}{fg=DeckBlue}
+\setbeamercolor{title}{fg=DeckBlue}
+\setbeamercolor{frametitle}{fg=DeckBlue,bg=white}
+\setbeamercolor{block title}{fg=white,bg=DeckBlue}
+\setbeamercolor{block body}{fg=black,bg=DeckSoft}
+\setbeamercolor{alerted text}{fg=DeckGold}
+
+\title{Useful Off-the-Shelf Skills}
+\subtitle{Short setup notes I actually use}
+\author{jojo dotfiles}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}{Useful Off-the-Shelf Skills}
+\small
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.32\textwidth}
+\begin{block}{agent-browser}
+Browser automation for agents.
+
+\vspace{0.35em}
+\scriptsize
+\texttt{npm install -g agent-browser}\\
+\texttt{agent-browser install}\\
+\texttt{npx skills add vercel-labs/agent-browser --skill agent-browser}
+\end{block}
+\end{column}
+
+\begin{column}{0.32\textwidth}
+\begin{block}{dogfood}
+Exploratory QA on top of agent-browser.
+
+\vspace{0.35em}
+\scriptsize
+\texttt{npx skills add vercel-labs/agent-browser --skill dogfood}
+
+\vspace{0.5em}
+Outputs repro steps, screenshots, and videos.
+\end{block}
+\end{column}
+
+\begin{column}{0.32\textwidth}
+\begin{block}{gstack}
+Large role-based skill pack for planning, QA, review, and shipping.
+
+\vspace{0.35em}
+\scriptsize
+\texttt{Repo: garrytan/gstack}\\
+\texttt{Clone into .agents/skills/gstack}\\
+\texttt{cd .agents/skills/gstack \&\& ./setup --host codex}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}
