@@ -85,3 +85,20 @@ cd .agents/skills/gstack && ./setup --host codex
 ```
 
 - Notes: a large role-based skill pack for planning, review, QA, shipping, and retros.
+
+### smux
+
+- Repo: [ShawnPana/smux](https://github.com/ShawnPana/smux)
+- Install runtime:
+
+```bash
+curl -fsSL https://shawnpana.com/smux/install.sh | bash
+```
+
+- Install skill:
+
+```bash
+npx skills add ShawnPana/smux
+```
+
+- Notes: tmux setup plus `tmux-bridge` for cross-pane terminal automation and agent-to-agent communication.

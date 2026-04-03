@@ -1,11 +1,12 @@
 ---
 name: system-viva
-description: Use after multiple AI-assisted coding iterations when the goal is to batch important changes into one short human learning session. Generate a compact quiz, collect answers in a local web page, immediately teach back the missed or uncertain concepts after submission, evaluate understanding, update a learner profile, and produce a cited LaTeX Beamer debrief.
+description: This skill should be used after multiple AI-assisted coding iterations when the goal is to batch meaningful changes into one short human learning session with a quiz, immediate teaching review, learner profile update, and cited LaTeX Beamer debrief.
+version: 1.0.0
 ---
 
 # System Viva
 
-Use this skill to turn AI-assisted coding work into deliberate human learning.
+Use this skill to turn AI-assisted coding work into deliberate human learning. If arguments were provided, treat `$ARGUMENTS` as the current task context and include it when selecting learning atoms.
 
 Optimize for system understanding, not activity volume.
 
@@ -269,7 +270,7 @@ When interaction is needed, launch the local quiz UI after `session.json` has be
 Run:
 
 ```bash
-python3 skills/codex/system-viva/scripts/run_quiz_ui.py docs/learning/sessions/<stamp>/session.json
+python3 skills/claude/system-viva/scripts/run_quiz_ui.py docs/learning/sessions/<stamp>/session.json
 ```
 
 Workflow:

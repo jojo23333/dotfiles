@@ -31,7 +31,7 @@
 \begin{frame}{Useful Off-the-Shelf Skills}
 \small
 \begin{columns}[T,onlytextwidth]
-\begin{column}{0.32\textwidth}
+\begin{column}{0.48\textwidth}
 \begin{block}{agent-browser}
 Browser automation for agents.
 
@@ -41,9 +41,6 @@ Browser automation for agents.
 \texttt{agent-browser install}\\
 \texttt{npx skills add vercel-labs/agent-browser --skill agent-browser}
 \end{block}
-\end{column}
-
-\begin{column}{0.32\textwidth}
 \begin{block}{dogfood}
 Exploratory QA on top of agent-browser.
 
@@ -56,7 +53,7 @@ Outputs repro steps, screenshots, and videos.
 \end{block}
 \end{column}
 
-\begin{column}{0.32\textwidth}
+\begin{column}{0.48\textwidth}
 \begin{block}{gstack}
 Large role-based skill pack for planning, QA, review, and shipping.
 
@@ -65,6 +62,14 @@ Large role-based skill pack for planning, QA, review, and shipping.
 \texttt{Repo: garrytan/gstack}\\
 \texttt{Clone into .agents/skills/gstack}\\
 \texttt{cd .agents/skills/gstack \&\& ./setup --host codex}
+\end{block}
+\begin{block}{smux}
+tmux setup plus tmux-bridge for pane automation and agent-to-agent workflows.
+
+\vspace{0.35em}
+\scriptsize
+\texttt{curl -fsSL https://shawnpana.com/smux/install.sh | bash}\\
+\texttt{npx skills add ShawnPana/smux}
 \end{block}
 \end{column}
 \end{columns}
