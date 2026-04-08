@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Draft Send"
+  short_description: "Draft emails to files and open Mail with a safe review queue"
+  default_prompt: "Use $email-draft-send to save email drafts to text files, validate them, then open a GUI Mail review queue for manual sending and logging."

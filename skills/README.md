@@ -14,6 +14,10 @@ Current shared skill set:
 - `slides-pptgenjs`
 - `system-viva`
 
+Codex-only skill set:
+
+- `email-draft-send`
+
 ## Quick install
 
 From a local clone, install both skill sets into the current project:
