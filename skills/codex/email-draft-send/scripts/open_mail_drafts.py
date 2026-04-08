@@ -220,13 +220,133 @@ def _run_terminal(records: list[QueueRecord], readme_path: Path) -> int:
     return 0
 
 
+def _queue_status_text(records: list[QueueRecord], current_index: int) -> str:
+    lines = []
+    for index, record in enumerate(records):
+        marker = ">" if index == current_index else " "
+        status = STATUS_LABELS.get(record.status, record.status)
+        lines.append(f"{marker} {index + 1}/{len(records)} {status}: {_draft_recipients(record.draft)}")
+    return "\n".join(lines)
+
+
+def _dialog_button(message: str, buttons: list[str], default_button: str) -> str:
+    button_list = "{" + ", ".join(f'"{_apple_escape(button)}"' for button in buttons) + "}"
+    script = "\n".join(
+        [
+            (
+                f"display dialog {_apple_text_expression(message)} buttons {button_list} "
+                f'default button "{_apple_escape(default_button)}" with title "Email Draft Queue"'
+            ),
+            "return button returned of result",
+        ]
+    )
+    result = subprocess.run(["osascript", "-e", script], capture_output=True, text=True)
+    if result.returncode != 0:
+        stderr = result.stderr.strip() or "AppleScript dialog failed."
+        if "User canceled" in stderr or "-128" in stderr:
+            return "Finish and write README"
+        raise RuntimeError(stderr)
+    return result.stdout.strip()
+
+
+def _finish_dialog(readme_path: Path) -> None:
+    message = f"Wrote README log:\n{readme_path}"
+    script = (
+        f"display dialog {_apple_text_expression(message)} buttons {{\"OK\"}} "
+        'default button "OK" with title "Email Draft Queue"'
+    )
+    subprocess.run(["osascript", "-e", script], capture_output=True, text=True)
+
+
+def _run_applescript_dialog(records: list[QueueRecord], readme_path: Path) -> int:
+    print("AppleScript dialog mode. This opens visible Apple Mail drafts only; it will not send.")
+    print(f"README log will be written to: {readme_path}")
+
+    index = 0
+    while index < len(records):
+        record = records[index]
+        prompt = "\n".join(
+            [
+                "Email draft queue",
+                "",
+                _queue_status_text(records, index),
+                "",
+                "Current draft:",
+                f"To: {_draft_recipients(record.draft)}",
+                f"Subject: {record.draft.subject}",
+                "",
+                "Open creates and saves a visible Apple Mail draft. You still click Send manually.",
+            ]
+        )
+        action = _dialog_button(
+            prompt,
+            ["Finish and write README", "Skip current", "Open current in Mail"],
+            "Open current in Mail",
+        )
+
+        if action == "Finish and write README":
+            _write_readme(records, readme_path)
+            _finish_dialog(readme_path)
+            print(f"Wrote README log: {readme_path}")
+            return 0
+
+        if action == "Skip current":
+            record.status = "skipped"
+            index += 1
+            continue
+
+        try:
+            _open_draft_in_mail(record.draft)
+        except Exception as exc:
+            record.status = "error"
+            record.note = str(exc)
+            _write_readme(records, readme_path)
+            print(f"[ERROR] {exc}", file=sys.stderr)
+            return 1
+
+        record.status = "opened"
+        record.opened_at = _now()
+        after_open_prompt = "\n".join(
+            [
+                "Draft opened in Apple Mail.",
+                "",
+                f"To: {_draft_recipients(record.draft)}",
+                f"Subject: {record.draft.subject}",
+                "",
+                "After you manually send or close this Mail draft, choose what to do next.",
+            ]
+        )
+        next_action = _dialog_button(
+            after_open_prompt,
+            ["Finish and write README", "Skip current", "Mark done and open next"],
+            "Mark done and open next",
+        )
+
+        if next_action == "Finish and write README":
+            _write_readme(records, readme_path)
+            _finish_dialog(readme_path)
+            print(f"Wrote README log: {readme_path}")
+            return 0
+
+        if next_action == "Skip current":
+            record.status = "skipped_after_open"
+        else:
+            record.status = "marked_done"
+        index += 1
+
+    _write_readme(records, readme_path)
+    _finish_dialog(readme_path)
+    print(f"Wrote README log: {readme_path}")
+    return 0
+
+
 def _run_gui(records: list[QueueRecord], readme_path: Path) -> int:
     try:
         import tkinter as tk
         from tkinter import messagebox
     except Exception as exc:
         print(f"[WARN] Tkinter GUI unavailable: {exc}", file=sys.stderr)
-        return _run_terminal(records, readme_path)
+        return _run_applescript_dialog(records, readme_path)
 
     class DraftQueueApp:
         def __init__(self) -> None:
@@ -354,7 +474,7 @@ def _run_gui(records: list[QueueRecord], readme_path: Path) -> int:
         DraftQueueApp().run()
     except Exception as exc:
         print(f"[WARN] GUI failed: {exc}", file=sys.stderr)
-        return _run_terminal(records, readme_path)
+        return _run_applescript_dialog(records, readme_path)
     return 0
 
 

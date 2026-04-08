@@ -49,7 +49,7 @@ If validation fails, fix the file rather than guessing during send.
 
 ## Manual Sending In Mail
 
-Open drafts only after validation. By default, the sender opens a small Tkinter queue window with:
+Open drafts only after validation. By default, the sender opens a small queue window with:
 
 - current draft and queue list
 - `Open current in Mail`
@@ -73,7 +73,7 @@ Behavior:
 
 Do not auto-send. The user sends each message manually in Mail. The README log records what was opened, skipped, or marked done; it cannot prove that a user clicked Send inside Mail.
 
-For terminal-only operation, pass `--terminal`. Opening Mail requires GUI access.
+The first GUI choice is Python `tkinter`. If unavailable, the script falls back to macOS AppleScript dialogs so it still works without extra Python GUI dependencies. For terminal-only operation, pass `--terminal`. Opening Mail requires GUI access.
 
 ## Format Rules
 
