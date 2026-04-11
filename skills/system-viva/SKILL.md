@@ -1,6 +1,6 @@
 ---
 name: system-viva
-description: Use after multiple AI-assisted coding iterations when the goal is to batch important changes into one short human learning session. Generate a compact quiz, collect answers in a local web page, immediately teach back the missed or uncertain concepts after submission, evaluate understanding, update a learner profile, and produce a cited LaTeX Beamer debrief.
+description: Turn recent AI-assisted coding work into a short learning session that fights cognitive offloading. Generate a compact quiz, immediate teach-back review, learner profile update, and cited debrief so the human understands what the agent changed.
 ---
 
 # System Viva

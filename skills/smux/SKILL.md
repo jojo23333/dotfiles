@@ -1,6 +1,6 @@
 ---
 name: smux
-description: Control tmux panes and communicate between AI agents. Use this skill whenever the user mentions tmux panes, cross-pane communication, sending messages to other agents, reading other panes, managing tmux sessions, or interacting with processes running in tmux. Includes tmux-bridge CLI for agent-to-agent messaging and raw tmux commands for direct session control.
+description: Let coding agents in separate tmux panes talk to each other and control pane interactions safely. Use this skill for left-pane to right-pane messaging, agent handoffs, cross-pane prompts, or lower-level tmux session control through `tmux-bridge` and raw tmux commands.
 metadata:
   { "openclaw": { "emoji": "🖥️", "os": ["darwin", "linux"], "requires": { "bins": ["tmux", "tmux-bridge"] } } }
 ---

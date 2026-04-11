@@ -1,6 +1,6 @@
 ---
 name: read-github-code
-description: Use when the user shares a GitHub URL, names an owner/repo, or asks to inspect how a public repository works. Start with fast orientation, then switch to direct source reading when implementation detail matters.
+description: Inspect public GitHub repositories by orienting with README/docs/manifests and DeepWiki-style summaries first, then reading the real source files that answer the user’s question. Use when the user shares a GitHub URL or asks how a repo works.
 ---
 
 # Read GitHub Code
@@ -40,7 +40,7 @@ Start with the fastest high-signal material:
 2. package or build manifests
 3. top-level tree
 4. obvious entrypoints
-5. DeepWiki or other generated summaries only as orientation aids
+5. DeepWiki or other generated summaries as orientation aids before direct source reading
 
 At the end of the survey, identify:
 

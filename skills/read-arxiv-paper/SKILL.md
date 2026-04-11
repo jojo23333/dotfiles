@@ -1,6 +1,6 @@
 ---
 name: read-arxiv-paper
-description: Use when the user shares an arXiv or AlphaXiv URL, gives a paper ID, or asks to summarize, critique, compare, or apply a research paper.
+description: Read arXiv or AlphaXiv papers for summary, critique, comparison, and implementation relevance. Use when the user shares a paper link or ID and wants the method, evidence, caveats, or practical takeaways explained clearly.
 ---
 
 # Read arXiv Paper

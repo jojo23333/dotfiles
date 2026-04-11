@@ -10,13 +10,14 @@ Personal installable skills, bootstrap scripts, and a small pile of editor and t
 
 ## Included skills
 
-- `deep-research`
-- `read-arxiv-paper`
-- `read-github-code`
-- `slidev`
-- `slides-pptgenjs`
-- `system-viva`
-- `smux` (local fork / custom version)
+- `deep-research`: do broad external research and filter it down to source-backed findings.
+- `email-draft-send`: draft emails into reusable `.mail.txt` files, validate them, then open Apple Mail drafts one at a time for manual review and sending.
+- `read-arxiv-paper`: read arXiv or AlphaXiv papers for summary, critique, comparison, and implementation takeaways.
+- `read-github-code`: inspect GitHub repos by surveying README/docs/manifests and DeepWiki-style summaries first, then reading the actual source files that answer the question.
+- `slides-pptgenjs`: create or edit editable PowerPoint decks with PptxGenJS plus render and validation helpers.
+- `slidev`: keep a Slidev deck workflow around for Markdown-based presentations, but this one is not currently active for me.
+- `smux`: local fork of the split-pane agent communication skill; this is the one for letting the left coding pane talk to the right coding pane through `tmux-bridge`.
+- `system-viva`: fight cognitive offloading by turning recent AI-generated code changes into a short quiz, immediate teach-back review, and learning debrief.
 
 ## Install
 
