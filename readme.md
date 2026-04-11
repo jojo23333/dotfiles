@@ -56,6 +56,8 @@ All installer scripts accept `--project` if you want project-local installs inst
 ## Other configs
 
 - `other-configs/terminal/terminator/config`
+- `other-configs/terminal/iterm2/com.googlecode.iterm2.plist`
+- `other-configs/terminal/iterm2/iterm2-sync.sh`
 - `other-configs/vim/.vimrc`
 - `other-configs/vim/python.vimrc`
 - `other-configs/tmux/.tmux.conf`
